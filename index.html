@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -6,12 +5,12 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css">
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/L.Control.Layers.Tree.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/L.Control.Locate.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/qgis2web.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet-control-geocoder.Geocoder.css') }}">
         <style>
         html, body, #map {
             width: 100%;
@@ -25,21 +24,21 @@
     <body>
         <div id="map">
         </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/L.Control.Layers.Tree.min.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/indiaosm_1.js"></script>
-        <script src="data/Admin2_2.js"></script>
-        <script src="data/Book1_3.js"></script>
+        <script src="{{ url_for('static', filename='js/qgis2web_expressions.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/L.Control.Layers.Tree.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/L.Control.Locate.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/leaflet.rotatedMarker.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/leaflet.pattern.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/leaflet-hash.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/Autolinker.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/rbush.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/labelgun.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/labels.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/leaflet-control-geocoder.Geocoder.js') }}"></script>
+        <script src="{{ url_for('static', filename='data/indiaosm_1.js') }}"></script>
+        <script src="{{ url_for('static', filename='data/Admin2_2.js') }}"></script>
+        <script src="{{ url_for('static', filename='data/Book1_3.js') }}"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
@@ -62,19 +61,19 @@
          return tempDiv.innerHTML;
         }
         // add class to format popup if it contains media
-		function addClassToPopupIfMedia(content, popup) {
-			var tempDiv = document.createElement('div');
-			tempDiv.innerHTML = content;
-			if (tempDiv.querySelector('td img')) {
-				popup._contentNode.classList.add('media');
-					// Delay to force the redraw
-					setTimeout(function() {
-						popup.update();
-					}, 10);
-			} else {
-				popup._contentNode.classList.remove('media');
-			}
-		}
+                function addClassToPopupIfMedia(content, popup) {
+                        var tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = content;
+                        if (tempDiv.querySelector('td img')) {
+                                popup._contentNode.classList.add('media');
+                                        // Delay to force the redraw
+                                        setTimeout(function() {
+                                                popup.update();
+                                        }, 10);
+                        } else {
+                                popup._contentNode.classList.remove('media');
+                        }
+                }
         var title = new L.Control({'position':'topright'});
         title.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info');
@@ -97,7 +96,7 @@
         var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             pane: 'pane_OSMStandard_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            attribution: '<a href="https://www.openstreetmap.org/copyright">Â© OpenStreetMap contributors, CC-BY-SA</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
@@ -117,10 +116,10 @@
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+                        layer.on('popupopen', function(e) {
+                                addClassToPopupIfMedia(content, e.popup);
+                        });
+                        layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_indiaosm_1_0() {
@@ -131,7 +130,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(145,82,45,1.0)',
@@ -159,10 +158,10 @@
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+                        layer.on('popupopen', function(e) {
+                                addClassToPopupIfMedia(content, e.popup);
+                        });
+                        layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_Admin2_2_0() {
@@ -173,7 +172,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1.0, 
+                weight: 1.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(243,166,178,1.0)',
@@ -231,10 +230,10 @@
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+                        layer.on('popupopen', function(e) {
+                                addClassToPopupIfMedia(content, e.popup);
+                        });
+                        layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_Book1_3_0() {
